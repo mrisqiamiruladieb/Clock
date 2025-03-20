@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 public class MyFrame extends JFrame {
@@ -23,11 +25,24 @@ public class MyFrame extends JFrame {
         
         timeLabel = new JLabel();
         
-        time = timeFormat.format(Calendar.getInstance().getTime());
-        timeLabel.setText(time);
-        
         this.add(timeLabel);
         this.setVisible(true);
+        
+        setTime();
+    }
+    
+    //method
+    public void setTime() {
+        while (true) {
+            time = timeFormat.format(Calendar.getInstance().getTime());
+            timeLabel.setText(time);
+            
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
 }
