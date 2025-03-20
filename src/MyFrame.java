@@ -8,13 +8,16 @@ import javax.swing.*;
 public class MyFrame extends JFrame {
     
     //declare
-    Calendar calendar;
+//    Calendar calendar;
     SimpleDateFormat timeFormat;
     SimpleDateFormat dayFormat;
+    SimpleDateFormat dateFormat;
     JLabel timeLabel;
     JLabel dayLabel;
+    JLabel dateLabel;
     String time;
     String day;
+    String date;
     
     //construct
     MyFrame() {    
@@ -26,6 +29,7 @@ public class MyFrame extends JFrame {
         
         timeFormat = new SimpleDateFormat("HH:mm:ss");
         dayFormat = new SimpleDateFormat("EEEE");
+        dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         
         timeLabel = new JLabel();
         timeLabel.setFont(new Font("Verdana", Font.PLAIN, 50));
@@ -36,8 +40,12 @@ public class MyFrame extends JFrame {
         dayLabel = new JLabel();
         dayLabel.setFont(new Font("Ink Free", Font.PLAIN, 35));
                 
+        dateLabel = new JLabel();
+        dateLabel.setFont(new Font("Ink Free", Font.PLAIN, 25));
+        
         this.add(timeLabel);
         this.add(dayLabel);
+        this.add(dateLabel);
         this.setVisible(true);
         
         setTime();
@@ -51,6 +59,9 @@ public class MyFrame extends JFrame {
             
             day = dayFormat.format(Calendar.getInstance().getTime());
             dayLabel.setText(day);
+            
+            date = dateFormat.format(Calendar.getInstance().getTime());
+            dateLabel.setText(date);
             
             try {
                 Thread.sleep(1000);
